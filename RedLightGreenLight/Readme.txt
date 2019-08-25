@@ -1,5 +1,5 @@
 *********************************************************
-*				Red Light - Greeen Light				*
+*                Red Light - Greeen Light               *
 *********************************************************
 
 //File Structure (Subject to change depending on implementation)
