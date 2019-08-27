@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     #region Variables
     public string playerID; //this could also be an int
-    public int joyconID; //no idea if this is actually stored as an int
+    public int joyconID;
     #endregion
 
     public void SetPlayerID(string pid)
