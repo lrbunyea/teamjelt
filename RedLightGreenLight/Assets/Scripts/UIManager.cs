@@ -12,43 +12,52 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject pregameCanvas;
     [SerializeField] GameObject gameCanvas;
     //icon references
-    [SerializeField] GameObject p1off;
     [SerializeField] GameObject p1on;
-    [SerializeField] GameObject p1good;
     [SerializeField] GameObject p1bad;
-    [SerializeField] GameObject p2off;
     [SerializeField] GameObject p2on;
-    [SerializeField] GameObject p2good;
     [SerializeField] GameObject p2bad;
-    [SerializeField] GameObject p3off;
     [SerializeField] GameObject p3on;
-    [SerializeField] GameObject p3good;
     [SerializeField] GameObject p3bad;
-    [SerializeField] GameObject p4off;
     [SerializeField] GameObject p4on;
-    [SerializeField] GameObject p4good;
     [SerializeField] GameObject p4bad;
+    //background references
+    [SerializeField] GameObject greenbg;
     //message text references
     [SerializeField] Text statusText;
     [SerializeField] Text timerText;
+    //timer variables
+    private bool runTimer;
+    private float timerMax;
+    private float timer;
     #endregion
 
     #region Unity API
-    // Start is called before the first frame update
     void Start()
     {
-        
+        StopTimer();
+        timerMax = 30f; //Here is where the total time for the timer is set - I just did 30 seconds to start
+        timer = timerMax;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (runTimer)
         {
+            timer -= Time.deltaTime;
+            if (timer < 0)
+            {
+                timerText.text = "0";
+                //game has been won by the dragon
+                PlayerWon("Dragon");
+                //probably better to let the World manager know the game has been won and let that script handle it
+            } else
+            {
+                timerText.text = "" + timer + "";
+            }
         }
     }
     #endregion
 
+    //FUNCTIONS TO SWITCH BETWEEN PREGAME AND GAME SCREEN
     public void ShowPregameScreen()
     {
         gameCanvas.SetActive(false);
@@ -62,6 +71,7 @@ public class UIManager : MonoBehaviour
     }
 
     #region Pregame Helper Functions
+    //TOGGLE FUNCTIONS FOR INDIVIDUAL PLAYER ICONS ONCE THEY HAVE PRESSED A BUTTON TO JOIN THE GAME
     public void ToggleP1Connect()
     {
         if (p1on.activeInHierarchy)
@@ -111,58 +121,92 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Game Helper Functions
+    //Red/Green light functions - will also control timer
+    public void RedLight()
+    {
+        greenbg.SetActive(false);
+        StopTimer();
+    }
+
+    public void GreenLight()
+    {
+        greenbg.SetActive(true);
+        ResumeTimer();
+    }
+
+    //FUNCTIONS FOR INDIVIDUAL PLAYER ICONS TO FLIP TO TELLING PLAYER TO GO BACK TO START
     public void SendPlayerToStart(string player)
     {
         statusText.gameObject.SetActive(true);
-        statusText.text = player + "return to the start!";
+        statusText.text = player + " return to the start!";
     }
 
     public void ReturnP1ToStart()
     {
-        if (p1bad.activeInHierarchy)
-        {
-            p1bad.SetActive(false);
-        }
-        else
-        {
-            p1bad.SetActive(true);
-        }
+        SendPlayerToStart("Player 1");
+        p1bad.SetActive(true);
     }
 
     public void ReturnP2ToStart()
     {
-        if (p2bad.activeInHierarchy)
-        {
-            p2bad.SetActive(false);
-        }
-        else
-        {
-            p2bad.SetActive(true);
-        }
+        SendPlayerToStart("Player 2");
+        p2bad.SetActive(true);
     }
 
     public void ReturnP3ToStart()
     {
-        if (p3bad.activeInHierarchy)
-        {
-            p3bad.SetActive(false);
-        }
-        else
-        {
-            p3bad.SetActive(true);
-        }
+        SendPlayerToStart("Player 3");
+        p3bad.SetActive(true);
     }
 
     public void ReturnP4ToStart()
     {
-        if (p4bad.activeInHierarchy)
-        {
-            p4bad.SetActive(false);
-        }
-        else
-        {
-            p4bad.SetActive(true);
-        }
+        SendPlayerToStart("Player 4");
+        p4bad.SetActive(true);
+    }
+
+    //FUNCITONS TO FLIP INDIVIDUAL PLAYER ICONS BACK TO "GOOD" STATE AFTER THEY HAVE BEEN SENT TO START
+    public void ResetP1()
+    {
+        statusText.gameObject.SetActive(false);
+        p1bad.SetActive(false);
+    }
+
+    public void ResetP2()
+    {
+        statusText.gameObject.SetActive(false);
+        p2bad.SetActive(false);
+    }
+
+    public void ResetP3()
+    {
+        statusText.gameObject.SetActive(false);
+        p3bad.SetActive(false);
+    }
+
+    public void ResetP4()
+    {
+        statusText.gameObject.SetActive(false);
+        p4bad.SetActive(false);
+    }
+
+    //Sets the status line to whatever player has won
+    public void PlayerWon(string player)
+    {
+        statusText.gameObject.SetActive(true);
+        statusText.text = player + " has won the game!";
+    }
+    #endregion
+
+    #region Timer Functions
+    public void StopTimer()
+    {
+        runTimer = false;
+    }
+
+    public void ResumeTimer()
+    {
+        runTimer = true;
     }
     #endregion
 }
