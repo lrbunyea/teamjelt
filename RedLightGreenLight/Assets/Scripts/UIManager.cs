@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject p3bad;
     [SerializeField] GameObject p4on;
     [SerializeField] GameObject p4bad;
+    [SerializeField] GameObject drgon;
     //background references
     [SerializeField] GameObject greenbg;
     //message text references
@@ -116,6 +117,18 @@ public class UIManager : MonoBehaviour
         else
         {
             p4on.SetActive(true);
+        }
+    }
+
+    public void ToggleDragonConnect()
+    {
+        if (drgon.activeInHierarchy)
+        {
+            drgon.SetActive(false);
+        }
+        else
+        {
+            drgon.SetActive(true);
         }
     }
     #endregion
