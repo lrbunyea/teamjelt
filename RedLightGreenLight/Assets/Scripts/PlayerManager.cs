@@ -5,24 +5,47 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
 
-    //private List<Joycon> joycons;
+    private List<Joycon> joycons;
 
     #region Variables
-    public Player[] allPlayers;
+    public List<GameObject> allPlayers;
+    public List<int> joyconIDs;
     #endregion
 
-    #region Untiy API
+    #region Unity API
     void Start()
     {
-        // joycons = JoyconManager.Instance.j;
-        // if (joycons.Count < jc_ind+1){
-        //     Destroy(gameObject);
-        //}
+        joycons = JoyconManager.Instance.j;
+        joyconIDs = new List<int>();
+        allPlayers = new List<GameObject>();
     }
 
     void Update()
     {
-        //Probably wants to listen for button presses to add players to array
+        // Listen to button presses to add players to the array.
+
+        for(int i = 0; i < joycons.Count; i++) {
+            if(joycons[i].GetButtonDown(Joycon.Button.DPAD_UP) && !joyconIDs.Contains(i)) {
+                joyconIDs.Add(i);
+
+                GameObject Player = new GameObject("Player " + (allPlayers.Count + 1));
+                Player.AddComponent<Player>();
+                Player.GetComponent<Player>().SetPlayerID("Player " + (allPlayers.Count + 1));
+                Player.GetComponent<Player>().SetJoyconID(i);
+
+                allPlayers.Add(Player);
+
+                Debug.Log("Joycon number " + i + " connected.");
+
+                if(joycons.Count == allPlayers.Count) {
+                    System.Random random = new System.Random();
+                    int dragon = (int)random.Next(0, joycons.Count);
+                    allPlayers[dragon].GetComponent<Player>().SetIsDragon(true);
+                    Debug.Log("Player " + (dragon + 1) + " is the Dragon");
+                }
+            }
+        }
+
     }
     #endregion
 }
