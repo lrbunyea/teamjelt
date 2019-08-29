@@ -210,6 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 403980786}
   - component: {fileID: 403980785}
+  - component: {fileID: 403980787}
   m_Layer: 0
   m_Name: Win P1
   m_TagString: Untagged
@@ -280,6 +281,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &403980787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403980784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 0, y: 1, z: 0}
+  MoveRange: 1
+  MoveSpeed: 6
 --- !u!1 &572201474
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 572201476}
   - component: {fileID: 572201475}
+  - component: {fileID: 572201477}
   m_Layer: 0
   m_Name: Win P3
   m_TagString: Untagged
@@ -360,6 +378,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &572201477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572201474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 0, y: 1, z: 0}
+  MoveRange: 1
+  MoveSpeed: 5
 --- !u!1 &666411012
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 666411014}
   - component: {fileID: 666411013}
+  - component: {fileID: 666411015}
   m_Layer: 0
   m_Name: Fail Dragon
   m_TagString: Untagged
@@ -440,6 +475,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &666411015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666411012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 0, y: 1, z: 0}
+  MoveRange: 0.3
+  MoveSpeed: 0.6
 --- !u!1 &729368215
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 729368217}
   - component: {fileID: 729368216}
+  - component: {fileID: 729368218}
   m_Layer: 0
   m_Name: Win P2
   m_TagString: Untagged
@@ -520,6 +572,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &729368218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729368215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 0, y: 1, z: 0}
+  MoveRange: 1
+  MoveSpeed: 3
 --- !u!1 &933493813
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 933493815}
   - component: {fileID: 933493814}
+  - component: {fileID: 933493816}
   m_Layer: 0
   m_Name: Win P4
   m_TagString: Untagged
@@ -600,6 +669,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &933493816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933493813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 0, y: 1, z: 0}
+  MoveRange: 2
+  MoveSpeed: 4
 --- !u!1 &1622574812
 GameObject:
   m_ObjectHideFlags: 0

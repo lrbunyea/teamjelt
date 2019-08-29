@@ -213,6 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 244337487}
   - component: {fileID: 244337486}
+  - component: {fileID: 244337488}
   m_Layer: 0
   m_Name: Moving P1
   m_TagString: Untagged
@@ -283,6 +284,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &244337488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244337485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 1, y: 1, z: 0}
+  MoveRange: 0.2
+  MoveSpeed: 7
 --- !u!1 &548546785
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 548546787}
   - component: {fileID: 548546786}
+  - component: {fileID: 548546788}
   m_Layer: 0
   m_Name: Green Dragon
   m_TagString: Untagged
@@ -363,6 +381,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &548546788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548546785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 0, y: 1, z: 0}
+  MoveRange: 0.6
+  MoveSpeed: 0.2
 --- !u!1 &935683089
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +407,7 @@ GameObject:
   m_Component:
   - component: {fileID: 935683091}
   - component: {fileID: 935683090}
+  - component: {fileID: 935683092}
   m_Layer: 0
   m_Name: Moving P4
   m_TagString: Untagged
@@ -443,6 +478,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &935683092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935683089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 1, y: 1, z: 0}
+  MoveRange: 0.2
+  MoveSpeed: 8
 --- !u!1 &1419017662
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1509156432}
   - component: {fileID: 1509156431}
+  - component: {fileID: 1509156433}
   m_Layer: 0
   m_Name: Moving P3
   m_TagString: Untagged
@@ -603,6 +655,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1509156433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509156430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 1, y: 1, z: 0}
+  MoveRange: 0.2
+  MoveSpeed: 6
 --- !u!1 &1972812798
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1972812800}
   - component: {fileID: 1972812799}
+  - component: {fileID: 1972812801}
   m_Layer: 0
   m_Name: Moving P2
   m_TagString: Untagged
@@ -683,3 +752,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1972812801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972812798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 1, y: 1, z: 0}
+  MoveRange: 0.2
+  MoveSpeed: 5
