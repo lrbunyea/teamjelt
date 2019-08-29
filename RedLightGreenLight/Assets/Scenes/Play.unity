@@ -1326,7 +1326,7 @@ MonoBehaviour:
   Move: 1
   MoveVector: {x: 1, y: 0, z: 0}
   MoveRange: 0.1
-  MoveSpeed: 5
+  MoveSpeed: 7
 --- !u!212 &1556955584
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   Move: 1
   MoveVector: {x: 0, y: 2, z: 0}
   MoveRange: 0.2
-  MoveSpeed: 5
+  MoveSpeed: 6
 --- !u!1 &2062448082
 GameObject:
   m_ObjectHideFlags: 0
