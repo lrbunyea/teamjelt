@@ -12,17 +12,26 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject pregameCanvas;
     [SerializeField] GameObject gameCanvas;
     //icon references
-    [SerializeField] GameObject p1on;
+    [SerializeField] GameObject p1good;
     [SerializeField] GameObject p1bad;
-    [SerializeField] GameObject p2on;
+    [SerializeField] GameObject p1con;
+    [SerializeField] GameObject p1stop;
+    [SerializeField] GameObject p2good;
     [SerializeField] GameObject p2bad;
-    [SerializeField] GameObject p3on;
+    [SerializeField] GameObject p2con;
+    [SerializeField] GameObject p2stop;
+    [SerializeField] GameObject p3good;
     [SerializeField] GameObject p3bad;
-    [SerializeField] GameObject p4on;
+    [SerializeField] GameObject p3con;
+    [SerializeField] GameObject p3stop;
+    [SerializeField] GameObject p4good;
     [SerializeField] GameObject p4bad;
+    [SerializeField] GameObject p4con;
+    [SerializeField] GameObject p4stop;
     [SerializeField] GameObject drgon;
     //background references
     [SerializeField] GameObject greenbg;
+    [SerializeField] GameObject conbg;
     //message text references
     [SerializeField] Text statusText;
     [SerializeField] Text timerText;
@@ -42,9 +51,25 @@ public class UIManager : MonoBehaviour
         timer = timerMax;
         ShowGameScreen();
         gameOn = false;
+        //BeginGame();
     }
     void Update()
     {
+        /*
+        if (Input.anyKeyDown)
+        {
+            ReturnPlayerToStart(1);
+            
+            if (runTimer)
+            {
+                RedLight();
+            } else
+            {
+                GreenLight();
+            }
+            
+        }
+        */
         if (runTimer)
         {
             timer -= Time.deltaTime;
@@ -78,6 +103,7 @@ public class UIManager : MonoBehaviour
     public void BeginGame()
     {
         gameOn = true;
+        IconsConnected();
         statusText.text = "All players connected! Dragon, press Down or B for green light.";
     }
     /*
@@ -178,6 +204,7 @@ public class UIManager : MonoBehaviour
     public void RedLight()
     {
         greenbg.SetActive(false);
+        SetAllStopIcons();
         StopTimer();
     }
 
@@ -202,15 +229,19 @@ public class UIManager : MonoBehaviour
         if (iconpos == 1)
         {
             p1bad.SetActive(true);
+            p1stop.SetActive(false);
         } else if (iconpos == 2)
         {
             p2bad.SetActive(true);
+            p2stop.SetActive(false);
         } else if (iconpos == 3)
         {
             p3bad.SetActive(true);
+            p3stop.SetActive(false);
         } else if (iconpos == 4)
         {
             p4bad.SetActive(true);
+            p4stop.SetActive(false);
         }
     }
 
@@ -219,24 +250,57 @@ public class UIManager : MonoBehaviour
     {
         statusText.gameObject.SetActive(false);
         p1bad.SetActive(false);
+        p1stop.SetActive(false);
+        p1good.SetActive(true);
     }
 
     public void ResetP2()
     {
         statusText.gameObject.SetActive(false);
         p2bad.SetActive(false);
+        p2stop.SetActive(false);
+        p2good.SetActive(true);
     }
 
     public void ResetP3()
     {
         statusText.gameObject.SetActive(false);
         p3bad.SetActive(false);
+        p3stop.SetActive(false);
+        p3good.SetActive(true);
     }
 
     public void ResetP4()
     {
         statusText.gameObject.SetActive(false);
         p4bad.SetActive(false);
+        p4stop.SetActive(false);
+        p4good.SetActive(true);
+    }
+
+    public void IconsConnected()
+    {
+        p1con.SetActive(false);
+        p1stop.SetActive(true);
+        p2con.SetActive(false);
+        p2stop.SetActive(true);
+        p3con.SetActive(false);
+        p3stop.SetActive(true);
+        p4con.SetActive(false);
+        p4stop.SetActive(true);
+        conbg.SetActive(false);
+    }
+
+    public void SetAllStopIcons()
+    {
+        p1good.SetActive(false);
+        p2good.SetActive(false);
+        p3good.SetActive(false);
+        p4good.SetActive(false);
+        p1stop.SetActive(true);
+        p2stop.SetActive(true);
+        p3stop.SetActive(true);
+        p4stop.SetActive(true);
     }
 
     public void ResetAllPlayers()

@@ -43,6 +43,7 @@ public class PlayerManager : MonoBehaviour
                     int dragon = (int)random.Next(0, joycons.Count);
                     allPlayers[dragon].GetComponent<Player>().SetIsDragon(true);
                     Debug.Log("Player " + (dragon + 1) + " is the Dragon");
+                    joycons[dragon].SetRumble(160, 320, 1.0f, 200);
 
                     for (int j = 0; j < joycons.Count; j++)
                     {
