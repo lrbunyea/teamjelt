@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public int joyconID;
     public bool isDragon;
     public Vector3 lastTickAccel;
-    public float cooldown = 0.0f;
+    public float cooldown = 5.0f;
     public int iconPos;
     #endregion
 
@@ -37,6 +37,9 @@ public class Player : MonoBehaviour
                     Debug.Log("The State is Green Light");
                     UIManager.Instance.GreenLight();
                 }
+                if (j.GetButtonDown(Joycon.Button.SHOULDER_1) || j.GetButtonDown(Joycon.Button.SHOULDER_2)) {
+                    UIManager.Instance.PlayerWon("Player");
+                }
             }
             else
             {
@@ -45,11 +48,11 @@ public class Player : MonoBehaviour
                 float distance = Vector3.Distance(accel, lastTickAccel);
                 lastTickAccel = accel;
 
-                if (distance > 0.5f && cooldown == 0 && !UIManager.Instance.runTimer) //And State = Red Light
+                if (distance > 0.3f && cooldown == 0 && !UIManager.Instance.runTimer) //And State = Red Light
                 {
                     UIManager.Instance.ReturnPlayerToStart(iconPos);
                     Debug.Log("Player" + iconPos + "! Go Back to Start!");
-                    j.SetRumble(160, 320, 1.0f, 200);
+                    j.SetRumble(160, 320, 2.0f, 200);
                     cooldown = 15.0f;
                 }
 
@@ -60,6 +63,43 @@ public class Player : MonoBehaviour
                 else
                 {
                     cooldown = 0;
+                }
+            }
+        }
+        else {
+            if(isDragon) {
+                if (j.GetButtonDown(Joycon.Button.DPAD_UP))
+                {
+                    //Set state to Red Light.
+                    UIManager.Instance.RedLight();
+                    j.SetRumble(160, 320, 1.0f, 200);
+                }
+                if (j.GetButtonDown(Joycon.Button.DPAD_DOWN))
+                {
+                    //Set state to Green Light.
+                    UIManager.Instance.GreenLight();
+                    j.SetRumble(160, 320, 1.0f, 200);
+                }
+                if (j.GetButtonDown(Joycon.Button.PLUS) || j.GetButtonDown(Joycon.Button.MINUS)) {
+                    UIManager.Instance.BeginGame();
+                }
+            } else {
+                if (j.GetButtonDown(Joycon.Button.DPAD_UP))
+                {
+                    UIManager.Instance.ReturnPlayerToStart(iconPos);
+                    j.SetRumble(160, 320, 1.0f, 200);
+
+                }
+                if (j.GetButtonDown(Joycon.Button.DPAD_LEFT))
+                {
+                    UIManager.Instance.SetGood(iconPos);
+                    j.SetRumble(160, 320, 1.0f, 200);
+
+                }
+                if (j.GetButtonDown(Joycon.Button.DPAD_RIGHT)) {
+                    UIManager.Instance.SetStop(iconPos);
+                    j.SetRumble(160, 320, 1.0f, 200);
+
                 }
             }
         }

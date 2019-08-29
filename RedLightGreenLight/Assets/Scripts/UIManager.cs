@@ -44,6 +44,11 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Unity API
+    void Awake() {
+        if (Instance != null) Destroy(gameObject);
+        Instance = this;
+    }
+
     void Start()
     {
         StopTimer();
@@ -103,9 +108,15 @@ public class UIManager : MonoBehaviour
     public void BeginGame()
     {
         gameOn = true;
-        IconsConnected();
-        statusText.text = "All players connected! Dragon, press Down or B for green light.";
+        statusText.text = "Game Start! Dragon, press UP for Red Light and DOWN for Green Light.";
+        RedLight();
     }
+
+    public void GameReady() {
+        IconsConnected();
+        statusText.text = "All Players Connected! Dragon, press '+' or '-' when everyone's ready to start!";
+    }
+
     /*
     #region Pregame Helper Functions
     //TOGGLE FUNCTIONS FOR INDIVIDUAL PLAYER ICONS ONCE THEY HAVE PRESSED A BUTTON TO JOIN THE GAME
@@ -204,15 +215,19 @@ public class UIManager : MonoBehaviour
     public void RedLight()
     {
         greenbg.SetActive(false);
-        SetAllStopIcons();
-        StopTimer();
+        if(gameOn){
+            SetAllStopIcons();
+            StopTimer();
+        }
     }
 
     public void GreenLight()
     {
-        ResetAllPlayers();
         greenbg.SetActive(true);
-        ResumeTimer();
+        if(gameOn) {
+            ResetAllPlayers();
+            ResumeTimer();
+        }
     }
 
     //FUNCTIONS FOR INDIVIDUAL PLAYER ICONS TO FLIP TO TELLING PLAYER TO GO BACK TO START
@@ -225,22 +240,78 @@ public class UIManager : MonoBehaviour
 
     public void ReturnPlayerToStart(int iconpos)
     {
-        ReturnText(iconpos);
+        if (gameOn)
+            ReturnText(iconpos);
+
         if (iconpos == 1)
         {
             p1bad.SetActive(true);
+            p1good.SetActive(false);
             p1stop.SetActive(false);
         } else if (iconpos == 2)
         {
             p2bad.SetActive(true);
+            p2good.SetActive(false);
             p2stop.SetActive(false);
         } else if (iconpos == 3)
         {
             p3bad.SetActive(true);
+            p3good.SetActive(false);
             p3stop.SetActive(false);
         } else if (iconpos == 4)
         {
             p4bad.SetActive(true);
+            p4good.SetActive(false);
+            p4stop.SetActive(false);
+        }
+    }
+
+    public void SetStop(int iconpos)
+    {
+        if (iconpos == 1)
+        {
+            p1bad.SetActive(false);
+            p1good.SetActive(false);
+            p1stop.SetActive(true);
+        } else if (iconpos == 2)
+        {
+            p2bad.SetActive(false);
+            p2good.SetActive(false);
+            p2stop.SetActive(true);
+        } else if (iconpos == 3)
+        {
+            p3bad.SetActive(false);
+            p3good.SetActive(false);
+            p3stop.SetActive(true);
+        } else if (iconpos == 4)
+        {
+            p4bad.SetActive(false);
+            p4good.SetActive(false);
+            p4stop.SetActive(true);
+        }
+    }
+
+    public void SetGood(int iconpos)
+    {
+        if (iconpos == 1)
+        {
+            p1bad.SetActive(false);
+            p1good.SetActive(true);
+            p1stop.SetActive(false);
+        } else if (iconpos == 2)
+        {
+            p2bad.SetActive(false);
+            p2good.SetActive(true);
+            p2stop.SetActive(false);
+        } else if (iconpos == 3)
+        {
+            p3bad.SetActive(false);
+            p3good.SetActive(true);
+            p3stop.SetActive(false);
+        } else if (iconpos == 4)
+        {
+            p4bad.SetActive(false);
+            p4good.SetActive(true);
             p4stop.SetActive(false);
         }
     }
@@ -297,6 +368,10 @@ public class UIManager : MonoBehaviour
         p2good.SetActive(false);
         p3good.SetActive(false);
         p4good.SetActive(false);
+        p1bad.SetActive(false);
+        p2bad.SetActive(false);
+        p3bad.SetActive(false);
+        p4bad.SetActive(false);
         p1stop.SetActive(true);
         p2stop.SetActive(true);
         p3stop.SetActive(true);
@@ -315,7 +390,10 @@ public class UIManager : MonoBehaviour
     public void PlayerWon(string player)
     {
         statusText.gameObject.SetActive(true);
-        statusText.text = player + " has won the game!";
+        if (player == "Dragon")
+            statusText.text = "The Dragon has won the game!";
+        if (player == "Player")
+            statusText.text = "The Players have won the game!";
     }
     #endregion
 

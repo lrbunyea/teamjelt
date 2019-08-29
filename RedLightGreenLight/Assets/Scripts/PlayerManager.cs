@@ -45,16 +45,19 @@ public class PlayerManager : MonoBehaviour
                     Debug.Log("Player " + (dragon + 1) + " is the Dragon");
                     joycons[dragon].SetRumble(160, 320, 1.0f, 200);
 
+                    int iconPosition = 1;
+
                     for (int j = 0; j < joycons.Count; j++)
                     {
                         if (!allPlayers[j].GetComponent<Player>().isDragon)
                         {
-                            allPlayers[j].GetComponent<Player>().iconPos = j + 1;
+                            allPlayers[j].GetComponent<Player>().iconPos = iconPosition;
+                            iconPosition++;
                         }
                     }
 
                     //Funtion in UIManager to start the game "Ends waiting for players to connect"
-                    UIManager.Instance.BeginGame();
+                    UIManager.Instance.GameReady();
                 }
             }
         }
