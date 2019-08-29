@@ -682,6 +682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609354277}
   - component: {fileID: 609354276}
+  - component: {fileID: 609354278}
   m_Layer: 0
   m_Name: Waiting P3
   m_TagString: Untagged
@@ -752,6 +753,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &609354278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609354275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 0, y: 2, z: 0}
+  MoveRange: 0.2
+  MoveSpeed: 5
 --- !u!1 &1041419567
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1041419569}
   - component: {fileID: 1041419568}
+  - component: {fileID: 1041419570}
   m_Layer: 0
   m_Name: Waiting P4
   m_TagString: Untagged
@@ -832,6 +850,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1041419570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041419567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 0, y: 2, z: 0}
+  MoveRange: 0.2
+  MoveSpeed: 5
 --- !u!1 &1100541362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,6 +1394,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1750416292}
   - component: {fileID: 1750416291}
+  - component: {fileID: 1750416293}
+  - component: {fileID: 1750416294}
   m_Layer: 0
   m_Name: Waiting P1
   m_TagString: Untagged
@@ -1430,6 +1466,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &1750416293
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750416290}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!114 &1750416294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750416290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 0, y: 2, z: 0}
+  MoveRange: 0.2
+  MoveSpeed: 5
 --- !u!1 &1914572245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,6 +1784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2058185746}
   - component: {fileID: 2058185745}
+  - component: {fileID: 2058185747}
   m_Layer: 0
   m_Name: Homepage Dragon
   m_TagString: Untagged
@@ -1787,6 +1855,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2058185747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058185744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 0, y: 1, z: 0}
+  MoveRange: 0.4
+  MoveSpeed: 1
 --- !u!1 &2058361522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,6 +1881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2058361524}
   - component: {fileID: 2058361523}
+  - component: {fileID: 2058361525}
   m_Layer: 0
   m_Name: Waiting P2
   m_TagString: Untagged
@@ -1867,6 +1952,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2058361525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058361522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c920d6b80764b45d49ad0ba5f6e12f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Move: 1
+  MoveVector: {x: 0, y: 2, z: 0}
+  MoveRange: 0.2
+  MoveSpeed: 5
 --- !u!1 &2062448082
 GameObject:
   m_ObjectHideFlags: 0
