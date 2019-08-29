@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public bool isDragon;
     public Vector3 lastTickAccel;
     public float cooldown = 0.0f;
+    public int iconPos;
     #endregion
 
     public void Start() {
@@ -20,32 +21,46 @@ public class Player : MonoBehaviour
     }
 
     public void Update() {
-        if (isDragon) {
-            if(j.GetButtonDown(Joycon.Button.DPAD_UP)){
-                //Set state to Red Light.
-                Debug.Log("The State is Red Light");
-            }
-            if(j.GetButtonDown(Joycon.Button.DPAD_DOWN)){
-                //Set state to Green Light.
-                Debug.Log("The State is Green Light");
-            }
-        } else {
-            Vector3 accel = j.GetAccel();
-
-            float distance = Vector3.Distance(accel, lastTickAccel);
-            lastTickAccel = accel;
-
-            if (distance > 0.5f && cooldown == 0) //And State = Red Light
+        if (UIManager.Instance.gameOn)
+        {
+            if (isDragon)
             {
-                Debug.Log(playerID + "! Go Back to Start!");
-                j.SetRumble (160, 320, 1.0f, 200);
-                cooldown = 15.0f;
-            } 
+                if (j.GetButtonDown(Joycon.Button.DPAD_UP))
+                {
+                    //Set state to Red Light.
+                    Debug.Log("The State is Red Light");
+                    UIManager.Instance.RedLight();
+                }
+                if (j.GetButtonDown(Joycon.Button.DPAD_DOWN))
+                {
+                    //Set state to Green Light.
+                    Debug.Log("The State is Green Light");
+                    UIManager.Instance.GreenLight();
+                }
+            }
+            else
+            {
+                Vector3 accel = j.GetAccel();
 
-            if (cooldown > 0) {
-                cooldown -= 0.1f;
-            } else {
-                cooldown = 0;
+                float distance = Vector3.Distance(accel, lastTickAccel);
+                lastTickAccel = accel;
+
+                if (distance > 0.5f && cooldown == 0 && !UIManager.Instance.runTimer) //And State = Red Light
+                {
+                    UIManager.Instance.ReturnPlayerToStart(iconPos);
+                    Debug.Log("Player" + iconPos + "! Go Back to Start!");
+                    j.SetRumble(160, 320, 1.0f, 200);
+                    cooldown = 15.0f;
+                }
+
+                if (cooldown > 0)
+                {
+                    cooldown -= 0.1f;
+                }
+                else
+                {
+                    cooldown = 0;
+                }
             }
         }
     }
@@ -71,8 +86,4 @@ public class Player : MonoBehaviour
         SetPlayerID(pid);
         SetJoyconID(jid);
     }
-
-
-    //Where are we tracking motion? Should we do it here since it has the joycon id information?
-
 }

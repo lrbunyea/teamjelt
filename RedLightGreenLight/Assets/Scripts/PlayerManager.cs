@@ -35,6 +35,7 @@ public class PlayerManager : MonoBehaviour
 
                 allPlayers.Add(Player);
 
+
                 Debug.Log("Joycon number " + i + " connected.");
 
                 if(joycons.Count == allPlayers.Count) {
@@ -42,6 +43,17 @@ public class PlayerManager : MonoBehaviour
                     int dragon = (int)random.Next(0, joycons.Count);
                     allPlayers[dragon].GetComponent<Player>().SetIsDragon(true);
                     Debug.Log("Player " + (dragon + 1) + " is the Dragon");
+
+                    for (int j = 0; j < joycons.Count; j++)
+                    {
+                        if (!allPlayers[j].GetComponent<Player>().isDragon)
+                        {
+                            allPlayers[j].GetComponent<Player>().iconPos = j + 1;
+                        }
+                    }
+
+                    //Funtion in UIManager to start the game "Ends waiting for players to connect"
+                    UIManager.Instance.BeginGame();
                 }
             }
         }

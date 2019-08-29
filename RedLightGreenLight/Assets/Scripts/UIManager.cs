@@ -27,12 +27,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text statusText;
     [SerializeField] Text timerText;
     //timer variables
-    private bool runTimer;
+    public bool runTimer;
+    public bool gameOn;
     private float timerMax;
     private float timer;
-
-    //public bool isRed = true;
-    public GameObject joycons;
 
     #endregion
 
@@ -42,13 +40,11 @@ public class UIManager : MonoBehaviour
         StopTimer();
         timerMax = 30f; //Here is where the total time for the timer is set - I just did 30 seconds to start
         timer = timerMax;
+        ShowGameScreen();
+        gameOn = false;
     }
     void Update()
     {
-        //checks if a player must be sent back
-        if (joycons.GetComponent<JoyconDemo>().someoneGoesBack)
-            ReturnPToStart();
-
         if (runTimer)
         {
             timer -= Time.deltaTime;
@@ -79,8 +75,43 @@ public class UIManager : MonoBehaviour
         gameCanvas.SetActive(true);
     }
 
+    public void BeginGame()
+    {
+        gameOn = true;
+        statusText.text = "All players connected! Dragon, press Down or B for green light.";
+    }
+    /*
     #region Pregame Helper Functions
     //TOGGLE FUNCTIONS FOR INDIVIDUAL PLAYER ICONS ONCE THEY HAVE PRESSED A BUTTON TO JOIN THE GAME
+    public void ToggleConnect(string[] players, int dragon)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (i == dragon)
+            {
+                ToggleDragonConnect();
+            } else
+            {
+                if (!p1on.activeInHierarchy)
+                {
+                    p1on.SetActive(true);
+                }
+                else if (!p2on.activeInHierarchy)
+                {
+                    p2on.SetActive(true);
+                }
+                else if (!p3on.activeInHierarchy)
+                {
+                    p3on.SetActive(true);
+                }
+                else if (!p4on.activeInHierarchy)
+                {
+                    p4on.SetActive(true);
+                }
+            }
+        }
+    }
+
     public void ToggleP1Connect()
     {
         if (p1on.activeInHierarchy)
@@ -140,6 +171,7 @@ public class UIManager : MonoBehaviour
         }
     }
     #endregion
+    */
 
     #region Game Helper Functions
     //Red/Green light functions - will also control timer
@@ -147,61 +179,41 @@ public class UIManager : MonoBehaviour
     {
         greenbg.SetActive(false);
         StopTimer();
-
-        joycons.GetComponent<JoyconDemo>().isRed = true;
-        
-
     }
 
     public void GreenLight()
     {
+        ResetAllPlayers();
         greenbg.SetActive(true);
         ResumeTimer();
-
-        joycons.GetComponent<JoyconDemo>().isRed = false;
-        
     }
 
     //FUNCTIONS FOR INDIVIDUAL PLAYER ICONS TO FLIP TO TELLING PLAYER TO GO BACK TO START
-    public void SendPlayerToStart(int playerID)
+    public void ReturnText(int playerID)
     {
-        //statusText.gameObject.SetActive(true);
-        //statusText.text = playerID + " return to the start!";
-        Debug.Log(playerID + " go back to the start you daft turd!");
+        statusText.gameObject.SetActive(true);
+        statusText.text = "Player " + playerID + " return to the start!";
+        //Debug.Log(playerID + " go back to the start you daft turd!");
     }
 
-    public void ReturnPToStart()
+    public void ReturnPlayerToStart(int iconpos)
     {
-        SendPlayerToStart(joycons.GetComponent<JoyconDemo>().whoGoesBack);
-
-        if(joycons.GetComponent<JoyconDemo>().whoGoesBack == 1)
+        ReturnText(iconpos);
+        if (iconpos == 1)
+        {
             p1bad.SetActive(true);
-        if (joycons.GetComponent<JoyconDemo>().whoGoesBack == 2)
-            p1bad.SetActive(true);
-        if (joycons.GetComponent<JoyconDemo>().whoGoesBack == 3)
-            p1bad.SetActive(true);
-        if (joycons.GetComponent<JoyconDemo>().whoGoesBack == 4)
-            p1bad.SetActive(true);
-    }
-    /*
-    public void ReturnP2ToStart()
-    {
-        SendPlayerToStart("Player 2");
-        p2bad.SetActive(true);
+        } else if (iconpos == 2)
+        {
+            p2bad.SetActive(true);
+        } else if (iconpos == 3)
+        {
+            p3bad.SetActive(true);
+        } else if (iconpos == 4)
+        {
+            p4bad.SetActive(true);
+        }
     }
 
-    public void ReturnP3ToStart()
-    {
-        SendPlayerToStart("Player 3");
-        p3bad.SetActive(true);
-    }
-
-    public void ReturnP4ToStart()
-    {
-        SendPlayerToStart("Player 4");
-        p4bad.SetActive(true);
-    }
-    */
     //FUNCITONS TO FLIP INDIVIDUAL PLAYER ICONS BACK TO "GOOD" STATE AFTER THEY HAVE BEEN SENT TO START
     public void ResetP1()
     {
@@ -225,6 +237,14 @@ public class UIManager : MonoBehaviour
     {
         statusText.gameObject.SetActive(false);
         p4bad.SetActive(false);
+    }
+
+    public void ResetAllPlayers()
+    {
+        ResetP1();
+        ResetP2();
+        ResetP3();
+        ResetP4();
     }
 
     //Sets the status line to whatever player has won
