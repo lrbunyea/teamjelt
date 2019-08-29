@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
     public void SetPlayerID(string pid)
     {
         playerID = pid;
+        Debug.Log(playerID);
     }
 
     public void SetJoyconID(int jid)

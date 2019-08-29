@@ -30,6 +30,10 @@ public class UIManager : MonoBehaviour
     private bool runTimer;
     private float timerMax;
     private float timer;
+
+    //public bool isRed = true;
+    public GameObject joycons;
+
     #endregion
 
     #region Unity API
@@ -41,6 +45,10 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
+        //checks if a player must be sent back
+        if (joycons.GetComponent<JoyconDemo>().someoneGoesBack)
+            ReturnPToStart();
+
         if (runTimer)
         {
             timer -= Time.deltaTime;
@@ -139,27 +147,43 @@ public class UIManager : MonoBehaviour
     {
         greenbg.SetActive(false);
         StopTimer();
+
+        joycons.GetComponent<JoyconDemo>().isRed = true;
+        
+
     }
 
     public void GreenLight()
     {
         greenbg.SetActive(true);
         ResumeTimer();
+
+        joycons.GetComponent<JoyconDemo>().isRed = false;
+        
     }
 
     //FUNCTIONS FOR INDIVIDUAL PLAYER ICONS TO FLIP TO TELLING PLAYER TO GO BACK TO START
-    public void SendPlayerToStart(string player)
+    public void SendPlayerToStart(int playerID)
     {
-        statusText.gameObject.SetActive(true);
-        statusText.text = player + " return to the start!";
+        //statusText.gameObject.SetActive(true);
+        //statusText.text = playerID + " return to the start!";
+        Debug.Log(playerID + " go back to the start you daft turd!");
     }
 
-    public void ReturnP1ToStart()
+    public void ReturnPToStart()
     {
-        SendPlayerToStart("Player 1");
-        p1bad.SetActive(true);
-    }
+        SendPlayerToStart(joycons.GetComponent<JoyconDemo>().whoGoesBack);
 
+        if(joycons.GetComponent<JoyconDemo>().whoGoesBack == 1)
+            p1bad.SetActive(true);
+        if (joycons.GetComponent<JoyconDemo>().whoGoesBack == 2)
+            p1bad.SetActive(true);
+        if (joycons.GetComponent<JoyconDemo>().whoGoesBack == 3)
+            p1bad.SetActive(true);
+        if (joycons.GetComponent<JoyconDemo>().whoGoesBack == 4)
+            p1bad.SetActive(true);
+    }
+    /*
     public void ReturnP2ToStart()
     {
         SendPlayerToStart("Player 2");
@@ -177,7 +201,7 @@ public class UIManager : MonoBehaviour
         SendPlayerToStart("Player 4");
         p4bad.SetActive(true);
     }
-
+    */
     //FUNCITONS TO FLIP INDIVIDUAL PLAYER ICONS BACK TO "GOOD" STATE AFTER THEY HAVE BEEN SENT TO START
     public void ResetP1()
     {
